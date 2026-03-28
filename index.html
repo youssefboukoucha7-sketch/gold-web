@@ -171,22 +171,16 @@
             about: { title: "About Gold Bullion Trade", content: "<p class='text-gray-400 leading-loose'>GoldBullionTrade.com is a specialized financial data platform founded in 2026. We leverage high-frequency trading APIs to provide users with the most accurate gold spot prices available globally. Our mission is to democratize institutional-grade gold data for retail investors and bullion traders.</p>" },
             privacy: { title: "Privacy Policy", content: "<p class='text-gray-400 text-sm leading-relaxed mb-4'>We take your privacy seriously. GoldBullionTrade.com uses Google AdSense cookies to deliver personalized advertising. We do not store or transmit your financial inputs from the calculator. All calculation logic is performed on your browser's local machine.</p>" },
             terms: { title: "Terms of Service", content: "<p class='text-gray-400 text-sm leading-relaxed'>Information provided on this site is for educational purposes only. Precious metal trading involves risk. GoldBullionTrade.com is not a financial advisor. By using our site, you agree that you are solely responsible for your trading decisions.</p>" },
-            contact: { 
-    title: "Contact Our Desk", 
-    content: `
-        <p class='text-gray-400 mb-6 text-sm italic font-semibold tracking-wide'>Your inquiry is priority. Expert bullion desk at your service.</p>
-        <form action="https://formspree.io/f/mdapalez" method="POST" class='space-y-4'>
-            <input type='text' name="name" placeholder='Full Name' required class='w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-gold transition-all duration-300'>
-            <input type='email' name="email" placeholder='Email Address' required class='w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-gold transition-all duration-300'>
-            <textarea name="message" placeholder='Inquiry / Portfolio Details' rows='4' required class='w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-gold transition-all duration-300'></textarea>
-            
-            <input type="hidden" name="_subject" value="New Inquiry from GoldBullionTrade.com">
-            
-            <button type="submit" class='bg-gold-gradient text-black font-extrabold py-4 w-full rounded-xl uppercase tracking-[0.2em] text-[10px] hover:scale-[1.03] active:scale-95 transition shadow-lg shadow-gold/20'>
-                Send Inquiry
-            </button>
-        </form>` 
-}
+            contact: {
+                title: "Contact Our Desk", 
+    content: `<form action="https://formspree.io/f/mdapalez" method="POST" class='space-y-4'>
+        <input type='text' name="name" placeholder='Full Name' required class='w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-gold'>
+        <input type='email' name="email" placeholder='Email Address' required class='w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-gold'>
+        <textarea name="message" placeholder='Inquiry Details' rows='4' required class='w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-gold'></textarea>
+        <input type="hidden" name="_subject" value="New Inquiry from GoldBullionTrade.com">
+        <button type="submit" class='bg-gold-gradient text-black font-bold py-4 w-full rounded-xl uppercase tracking-widest text-xs hover:scale-[1.03] transition'>Send Inquiry</button>
+    </form>` 
+};
 
         function showPage(k) {
             const p = pages[k];
