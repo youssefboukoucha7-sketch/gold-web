@@ -22,23 +22,24 @@
     <div class="bg-black border-b border-gray-900 py-2">
         <div class="container mx-auto px-6 flex justify-between items-center text-[10px] font-black tracking-[0.2em] uppercase">
             <span class="flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Market Status: Active</span>
-            <span class="text-gray-500">Institutional Gold Index <span class="text-white ml-2" id="liveSpotHeader">$4,500.00</span></span>
+            <span class="text-gray-500">Institutional Gold Index <span class="text-white ml-2" id="liveSpotHeader">$4,512.80</span></span>
         </div>
     </div>
 
     <nav class="border-b border-gray-900 p-6 sticky top-0 bg-[#0a0a0a]/90 backdrop-blur-xl z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="font-cinzel text-xl md:text-2xl font-extrabold flex items-center gap-3 tracking-widest">
-                <span class="bg-gold-gradient w-6 h-6 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.5)]"></span>
+            <a href="/" class="font-cinzel text-xl md:text-2xl font-extrabold flex items-center gap-3 tracking-widest uppercase">
+                <span class="bg-gold-gradient w-7 h-7 rounded-full shadow-[0_0_15px_rgba(212,175,55,0.5)]"></span>
                 G<span class="text-gold">OLD</span> B<span class="text-gold">ULLION</span> T<span class="text-gold">RADE</span>
             </a>
+            
             <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-widest text-gray-400">
                 <a href="#market" class="hover:text-gold transition">Market Data</a>
                 <a href="#analysis" class="hover:text-gold transition">Intelligence</a>
                 <a onclick="showPage('about')" class="hover:text-gold cursor-pointer">About</a>
-                <a onclick="showPage('contact')" class="text-gold hover:text-white transition cursor-pointer">Institutional Desk</a>
+                <a onclick="showPage('contact')" class="text-gold hover:text-white transition cursor-pointer">Contact</a>
             </div>
-            <button onclick="showPage('contact')" class="bg-gold-gradient text-black text-[10px] font-black px-6 py-2.5 rounded-full uppercase">Inquiry</button>
+            <button onclick="showPage('contact')" class="bg-gold-gradient text-black text-[10px] font-black px-6 py-2.5 rounded-full uppercase hover:scale-105 transition">Desk Inquiry</button>
         </div>
     </nav>
 
@@ -48,24 +49,24 @@
             <div class="article-card p-1 overflow-hidden h-full min-h-[500px] flex flex-col">
                 <div class="p-6 border-b border-gray-900 flex justify-between items-center">
                     <h2 class="font-cinzel text-sm font-bold text-gold tracking-widest uppercase">Global Market Index</h2>
-                    <span class="text-[9px] bg-gold/10 text-gold px-2 py-1 rounded font-bold">XAU INDEX LIVE</span>
+                    <span class="text-[9px] bg-gold/10 text-gold px-2 py-1 rounded font-bold uppercase">Institutional Live Feed</span>
                 </div>
                 <div class="flex-grow">
-                    <div id="tradingview_master_chart" style="height:100%;width:100%"></div>
+                    <div id="tradingview_master" style="height:100%;width:100%"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
                     <script type="text/javascript">
                     new TradingView.MediumWidget({
                       "symbols": [["Gold Index", "GOLD|1M"]],
                       "chartOnly": false, "width": "100%", "height": "100%",
                       "locale": "en", "colorTheme": "dark", "autosize": true,
-                      "container_id": "tradingview_master_chart"
+                      "container_id": "tradingview_master"
                     });
                     </script>
                 </div>
             </div>
 
             <div class="article-card p-8 border-l-4 border-l-gold shadow-2xl flex flex-col justify-center">
-                <h2 class="font-cinzel text-lg font-bold text-white mb-10 tracking-widest uppercase">Price Integration Engine</h2>
+                <h2 class="font-cinzel text-lg font-bold text-white mb-10 tracking-widest uppercase">Multi-Grade Valuation</h2>
                 <div class="space-y-8">
                     <div>
                         <label class="text-[10px] font-black text-gray-600 uppercase tracking-[0.2em] mb-3 block italic">Unit Mass (Grams)</label>
@@ -75,15 +76,17 @@
                         <label class="text-[10px] font-black text-gray-600 uppercase tracking-[0.2em] mb-3 block italic">Purity Specification</label>
                         <select id="calcKarat" class="w-full bg-black border border-gray-800 p-5 rounded-2xl text-white font-bold text-lg appearance-none cursor-pointer">
                             <option value="24" selected>24K - Fine Bullion (99.9%)</option>
-                            <option value="22">22K - Standard Coinage (91.6%)</option>
-                            <option value="21">21K - High Jewelry (87.5%)</option>
+                            <option value="22">22K - Investment Standard (91.6%)</option>
+                            <option value="21">21K - Regional Benchmark (87.5%)</option>
+                            <option value="18">18K - Traditional Jewelry (75.0%)</option>
+                            <option value="14">14K - Commercial Grade (58.3%)</option>
                         </select>
                     </div>
                     <div class="bg-gold/5 p-8 rounded-[32px] border border-gold/20 text-center mt-10">
-                        <span class="text-[9px] font-black text-gold uppercase tracking-[0.4em] mb-4 block italic">Value based on Live Index</span>
+                        <span class="text-[9px] font-black text-gold uppercase tracking-[0.4em] mb-4 block italic uppercase">Value based on Institutional Index</span>
                         <span id="calcResult" class="text-5xl md:text-6xl font-black text-white font-mono tracking-tighter">$0.00</span>
                         <div class="mt-4 text-[10px] text-gray-700 font-bold uppercase tracking-widest">
-                             Market Index Rate: <span id="masterPriceDisplay">$4,500.00</span> / oz
+                             Market Rate: <span id="masterPriceDisplay">$4,512.80</span> / oz
                         </div>
                     </div>
                 </div>
@@ -92,28 +95,25 @@
     </main>
 
     <section id="analysis" class="container mx-auto px-6 py-24 border-t border-gray-900">
-        <h2 class="font-cinzel text-2xl text-gold mb-20 text-center tracking-[0.5em] uppercase text-shadow-lg">Bullion Intelligence Reports</h2>
+        <h2 class="font-cinzel text-2xl text-gold mb-20 text-center tracking-[0.5em] uppercase">Market Intelligence Reports</h2>
         <div class="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
-            <article class="article-card p-10 text-left hover:bg-[#111]">
+            <article class="article-card p-10 text-left">
                 <span class="text-gold font-black text-[9px] uppercase tracking-widest mb-6 block">Analysis</span>
                 <h3 class="font-cinzel text-xl text-white mb-5">The 4.5K Resistance Level</h3>
                 <p class="text-gray-500 text-sm leading-relaxed mb-8 italic">Analyzing the unprecedented surge in gold indices during the first fiscal quarter of 2026.</p>
                 <div class="h-[1px] bg-gray-900 w-full mb-4"></div>
-                <span class="text-[9px] text-gray-700 uppercase font-bold">MARCH 2026 • 4 MIN READ</span>
             </article>
-            <article class="article-card p-10 text-left hover:bg-[#111]">
+            <article class="article-card p-10 text-left">
                 <span class="text-gold font-black text-[9px] uppercase tracking-widest mb-6 block">Education</span>
                 <h3 class="font-cinzel text-xl text-white mb-5">Index vs Spot Pricing</h3>
                 <p class="text-gray-500 text-sm leading-relaxed mb-8 italic">Why institutional traders prefer tracking indices like GOLD over traditional spot pricing during volatility.</p>
                 <div class="h-[1px] bg-gray-900 w-full mb-4"></div>
-                <span class="text-[9px] text-gray-700 uppercase font-bold">MARCH 2026 • 6 MIN READ</span>
             </article>
-            <article class="article-card p-10 text-left hover:bg-[#111]">
+            <article class="article-card p-10 text-left">
                 <span class="text-gold font-black text-[9px] uppercase tracking-widest mb-6 block">Market Tech</span>
                 <h3 class="font-cinzel text-xl text-white mb-5">Algorithmic Trading Tools</h3>
                 <p class="text-gray-500 text-sm leading-relaxed mb-8 italic">Leveraging precision calculators to determine real-time asset value based on global index feeds.</p>
                 <div class="h-[1px] bg-gray-900 w-full mb-4"></div>
-                <span class="text-[9px] text-gray-700 uppercase font-bold">MARCH 2026 • 3 MIN READ</span>
             </article>
         </div>
     </section>
@@ -131,20 +131,18 @@
                 <a onclick="showPage('about')" class="hover:text-gold cursor-pointer transition">The Platform</a>
                 <a onclick="showPage('privacy')" class="hover:text-gold cursor-pointer transition">Privacy Protocol</a>
                 <a onclick="showPage('terms')" class="hover:text-gold cursor-pointer transition">Service Terms</a>
-                <a onclick="showPage('contact')" class="text-gold hover:text-white cursor-pointer transition">Institutional Desk</a>
+                <a onclick="showPage('contact')" class="text-gold hover:text-white cursor-pointer transition uppercase">Contact</a>
             </div>
             <p class="text-[9px] text-gray-800 tracking-[0.6em] uppercase font-black italic">GoldBullionTrade.com • Professional Asset Intelligence • 2026</p>
         </div>
     </footer>
 
     <script>
-        // التوافق التام مع ترايدينغ فيو
-        const masterIndexPrice = 4512.80; // السعر المطابق للرسم البياني في 2026
+        const masterIndexPrice = 4512.80; // السعر الثابت المتطابق مع ترايدينغ فيو
         const gramToOunce = 31.1035;
         const livePrice24K = masterIndexPrice / gramToOunce;
 
         function initializeCalculations() {
-            // تحديث العرض العلوي
             document.getElementById('liveSpotHeader').innerText = `$${masterIndexPrice.toLocaleString()}`;
             document.getElementById('masterPriceDisplay').innerText = `$${masterIndexPrice.toLocaleString()}`;
             calculateValue();
@@ -153,7 +151,7 @@
         function calculateValue() {
             const w = parseFloat(document.getElementById('calcWeight').value) || 0;
             const k = parseInt(document.getElementById('calcKarat').value);
-            // المعادلة مبنية على سعر الـ Index الظاهر في TradingView
+            // الحساب الدقيق بناءً على العيارات الـ 5 المتاحة
             const val = w * (livePrice24K * (k / 24));
             document.getElementById('calcResult').innerText = `$${val.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         }
@@ -163,12 +161,12 @@
             privacy: { title: "Privacy Protocol", content: "<p class='text-gray-500 text-xs uppercase tracking-widest'>Ad personalization active via Google AdSense. No financial data is stored on our secure infrastructure.</p>" },
             terms: { title: "Terms of Use", content: "<p class='text-gray-500 text-xs italic uppercase tracking-tighter'>All data is for informational purposes. Market volatility entails capital risk. Consult an advisor.</p>" },
             contact: { 
-                title: "Institutional Desk", 
+                title: "Inquiry Desk", 
                 content: `<form action="https://formspree.io/f/mdapalez" method="POST" class='space-y-6 mt-10'>
-                    <input type='text' name="name" placeholder='Trader Name' required class='w-full bg-black border border-gray-800 p-5 rounded-2xl text-white text-[10px] font-black uppercase tracking-widest focus:border-gold outline-none'>
-                    <input type='email' name="email" placeholder='Official Email' required class='w-full bg-black border border-gray-800 p-5 rounded-2xl text-white text-[10px] font-black uppercase tracking-widest focus:border-gold outline-none'>
-                    <textarea name="message" placeholder='Inquiry...' rows='4' required class='w-full bg-black border border-gray-800 p-5 rounded-2xl text-white text-xs font-bold focus:border-gold outline-none'></textarea>
-                    <button type="submit" class='bg-gold-gradient text-black font-black py-5 w-full rounded-2xl uppercase tracking-[0.4em] text-[10px] hover:shadow-gold/20 shadow-lg'>Execute Inquiry</button>
+                    <input type='text' name="name" placeholder='Full Name' required class='w-full bg-black border border-gray-800 p-5 rounded-2xl text-white text-[10px] font-black uppercase tracking-widest focus:border-gold outline-none'>
+                    <input type='email' name="email" placeholder='Email Address' required class='w-full bg-black border border-gray-800 p-5 rounded-2xl text-white text-[10px] font-black uppercase tracking-widest focus:border-gold outline-none'>
+                    <textarea name="message" placeholder='How can we help you?' rows='4' required class='w-full bg-black border border-gray-800 p-5 rounded-2xl text-white text-xs font-bold focus:border-gold outline-none'></textarea>
+                    <button type="submit" class='bg-gold-gradient text-black font-black py-5 w-full rounded-2xl uppercase tracking-[0.4em] text-[10px] shadow-lg'>Send Message</button>
                 </form>` 
             }
         };
